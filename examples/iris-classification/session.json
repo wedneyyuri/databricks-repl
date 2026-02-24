@@ -1,0 +1,62 @@
+{
+  "status": "destroyed",
+  "cluster_id": "0000-000000-xxxxxxxx",
+  "context_id": "00000000000000000000000000000000",
+  "session_name": "iris-classification",
+  "step_counter": 5,
+  "created_at": "2026-02-22T02:00:02.881510+00:00",
+  "profile": "default",
+  "steps": [
+    {
+      "step": 1,
+      "tag": "load_data",
+      "session_name": "iris-classification",
+      "status": "Finished",
+      "command_file": "./repl_outputs/001_load_data.cmd.py",
+      "started_at": "2026-02-22T02:00:13.399501+00:00",
+      "finished_at": "2026-02-22T02:00:20.827932+00:00",
+      "elapsed_seconds": 7.4
+    },
+    {
+      "step": 2,
+      "tag": "preprocess",
+      "session_name": "iris-classification",
+      "status": "Finished",
+      "command_file": "./repl_outputs/002_preprocess.cmd.py",
+      "started_at": "2026-02-22T02:00:30.568698+00:00",
+      "finished_at": "2026-02-22T02:00:31.613381+00:00",
+      "elapsed_seconds": 1.0
+    },
+    {
+      "step": 3,
+      "tag": "train",
+      "session_name": "iris-classification",
+      "status": "Finished",
+      "command_file": "./repl_outputs/003_train.cmd.py",
+      "started_at": "2026-02-22T02:00:36.489436+00:00",
+      "finished_at": "2026-02-22T02:00:39.745135+00:00",
+      "elapsed_seconds": 3.3
+    },
+    {
+      "step": 4,
+      "tag": "evaluate",
+      "session_name": "iris-classification",
+      "status": "Finished",
+      "command_file": "./repl_outputs/004_evaluate.cmd.py",
+      "started_at": "2026-02-22T02:00:48.256470+00:00",
+      "finished_at": "2026-02-22T02:00:49.134461+00:00",
+      "elapsed_seconds": 0.9
+    },
+    {
+      "step": 5,
+      "tag": "persist_model",
+      "session_name": "iris-classification",
+      "status": "Finished",
+      "command_file": "./repl_outputs/005_persist_model.cmd.py",
+      "started_at": "2026-02-22T02:01:00.589676+00:00",
+      "finished_at": "2026-02-22T02:01:03.526866+00:00",
+      "elapsed_seconds": 2.9
+    }
+  ],
+  "destroyed_at": "2026-02-22T02:01:16.941645+00:00"
+}

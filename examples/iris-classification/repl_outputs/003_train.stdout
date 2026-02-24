@@ -1,0 +1,6 @@
+Training accuracy: 1.0000
+Feature importances:
+  petal width (cm): 0.4549
+  petal length (cm): 0.4002
+  sepal length (cm): 0.1206
+  sepal width (cm): 0.0243

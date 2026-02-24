@@ -1,0 +1,18 @@
+Model saved to /Volumes/catalog/schema/vol/iris-classification/model.pkl
+Metadata saved to /Volumes/catalog/schema/vol/iris-classification/meta.json
+{
+  "feature_cols": [
+    "sepal length (cm)",
+    "sepal width (cm)",
+    "petal length (cm)",
+    "petal width (cm)"
+  ],
+  "label_names": {
+    "0": "setosa",
+    "1": "versicolor",
+    "2": "virginica"
+  },
+  "train_size": 105,
+  "test_size": 45,
+  "test_accuracy": 0.8888888888888888
+}

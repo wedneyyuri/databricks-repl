@@ -1,0 +1,75 @@
+{
+  "skill_name": "databricks-repl",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run a fibonacci function on the cluster that computes the 10th fibonacci number and prints the result",
+      "expected_output": "The REPL prints 55 (the 10th fibonacci number)",
+      "files": [],
+      "assertions": [
+        "A session is created before executing code",
+        "The exec response contains a stdout_file path",
+        "The stdout output contains the number 55",
+        "The session is not destroyed prematurely"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Cancel the current command on the cluster, but there is no command running right now",
+      "expected_output": "A NothingToCancel error indicating no active command exists",
+      "files": [],
+      "assertions": [
+        "The cancel subcommand is called without --run-id",
+        "The response status is NothingToCancel",
+        "No crash or unhandled exception occurs"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Start a long-running command (time.sleep(120)) on the cluster, then cancel it before it finishes",
+      "expected_output": "The command is cancelled and the session remains usable for subsequent commands",
+      "files": [],
+      "assertions": [
+        "A session is created before executing code",
+        "The exec subcommand is invoked with a long-running command",
+        "active_command appears in session.json while the command runs",
+        "The cancel subcommand is called without --run-id and auto-detects the command_id",
+        "The cancel response status is cancelled",
+        "active_command is cleared from session.json after cancellation",
+        "A follow-up exec succeeds on the same session"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Execute a long-running command (time.sleep(120)) with a short timeout (--timeout 5), then use await to wait for it to finish",
+      "expected_output": "The exec returns status Running with a tip, then await eventually returns the completed result",
+      "files": [],
+      "assertions": [
+        "A session is created before executing code",
+        "The exec subcommand is invoked with --timeout 5",
+        "The exec response has status Running",
+        "The exec response includes a command_id and a tip object",
+        "active_command is present in session.json after the timeout",
+        "The await subcommand is called",
+        "The await response has status Finished",
+        "active_command is cleared from session.json after await succeeds",
+        "stdout and stderr files are written after await succeeds"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Execute a long-running command with a short timeout, then cancel it instead of awaiting",
+      "expected_output": "The exec returns status Running, then cancel aborts the command and clears active_command",
+      "files": [],
+      "assertions": [
+        "A session is created before executing code",
+        "The exec subcommand returns status Running after timeout",
+        "active_command is present in session.json after the timeout",
+        "The cancel subcommand is called",
+        "The cancel response status is cancelled",
+        "active_command is cleared from session.json after cancel",
+        "A follow-up exec succeeds on the same session"
+      ]
+    }
+  ]
+}

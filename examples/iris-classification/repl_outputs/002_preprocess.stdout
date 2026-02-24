@@ -1,0 +1,4 @@
+Train size: 105
+Test size:  45
+Features:   ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
+Classes:    [np.str_('setosa'), np.str_('versicolor'), np.str_('virginica')]

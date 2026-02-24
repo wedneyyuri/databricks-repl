@@ -1,0 +1,6 @@
+Samples:     1,000,000,000
+Inside:      785,409,541
+Pi estimate: 3.1416381640
+Actual Pi:   3.1415926536
+Error:       0.0000455104
+Elapsed:     7.5s

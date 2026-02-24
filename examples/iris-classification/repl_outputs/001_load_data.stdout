@@ -1,0 +1,27 @@
+root
+ |-- sepal length (cm): double (nullable = true)
+ |-- sepal width (cm): double (nullable = true)
+ |-- petal length (cm): double (nullable = true)
+ |-- petal width (cm): double (nullable = true)
+ |-- label: long (nullable = true)
+ |-- species: string (nullable = true)
+
++-------+------------------+------------------+------------------+------------------+------------------+---------+
+|summary| sepal length (cm)|  sepal width (cm)| petal length (cm)|  petal width (cm)|             label|  species|
++-------+------------------+------------------+------------------+------------------+------------------+---------+
+|  count|               150|               150|               150|               150|               150|      150|
+|   mean| 5.843333333333333|3.0573333333333337|3.7580000000000005|1.1993333333333331|               1.0|     NULL|
+| stddev|0.8280661279778626|0.4358662849366984| 1.765298233259466|0.7622376689603467|0.8192319205190405|     NULL|
+|    min|               4.3|               2.0|               1.0|               0.1|                 0|   setosa|
+|    max|               7.9|               4.4|               6.9|               2.5|                 2|virginica|
++-------+------------------+------------------+------------------+------------------+------------------+---------+
+
++----------+-----+
+|   species|count|
++----------+-----+
+|    setosa|   50|
+|versicolor|   50|
+| virginica|   50|
++----------+-----+
+
+Total samples: 150

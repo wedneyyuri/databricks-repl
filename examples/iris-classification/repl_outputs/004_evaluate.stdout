@@ -1,0 +1,30 @@
+Test accuracy: 0.8889
+
+Classification Report:
+              precision    recall  f1-score   support
+
+      setosa       1.00      1.00      1.00        15
+  versicolor       0.78      0.93      0.85        15
+   virginica       0.92      0.73      0.81        15
+
+    accuracy                           0.89        45
+   macro avg       0.90      0.89      0.89        45
+weighted avg       0.90      0.89      0.89        45
+
+Confusion Matrix:
+              setosa  versicolor   virginica
+    setosa         15           0           0
+versicolor          0          14           1
+ virginica          0           4          11
+
+Sample predictions (first 10):
+  [OK] actual=virginica, predicted=virginica
+  [OK] actual=versicolor, predicted=versicolor
+  [MISS] actual=virginica, predicted=versicolor
+  [OK] actual=versicolor, predicted=versicolor
+  [OK] actual=virginica, predicted=virginica
+  [OK] actual=virginica, predicted=virginica
+  [OK] actual=versicolor, predicted=versicolor
+  [OK] actual=versicolor, predicted=versicolor
+  [OK] actual=setosa, predicted=setosa
+  [OK] actual=virginica, predicted=virginica

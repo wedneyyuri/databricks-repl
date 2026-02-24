@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Databricks REPL session artifacts (except examples/)
+session.json
+repl_outputs/
+!examples/**/session.json
+!examples/**/repl_outputs/
+!examples/**/repl_outputs/**
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+*.databrickscfg

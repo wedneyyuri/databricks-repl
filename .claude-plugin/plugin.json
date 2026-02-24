@@ -1,0 +1,12 @@
+{
+  "name": "databricks-repl",
+  "version": "1.0.0",
+  "description": "Claude Code skills for executing Python on Databricks clusters via a stateful REPL session, with session consolidation into clean scripts.",
+  "author": {
+    "name": "Wedney Lima"
+  },
+  "repository": "https://github.com/wedneyyuri/databricks-repl",
+  "license": "MIT",
+  "keywords": ["databricks", "repl", "spark", "python", "data-engineering"],
+  "skills": "./skills/"
+}
