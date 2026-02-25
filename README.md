@@ -4,6 +4,8 @@ Genie gives you AI inside Databricks. This gives you Databricks inside AI.
 
 Run code on Databricks clusters while your agent orchestrates everything else — other skills, subagents, MCPs, local files, and parallel hypothesis validation. One session, no boundaries.
 
+Databricks is powerful. But Databricks inside an AI agent that can parallelize work, compose tools, and cross every boundary? That's something else.
+
 Works with Claude Code, Cursor, GitHub Copilot, and [40+ other agents](https://skills.sh).
 
 ## Genie vs. Full Orchestration
@@ -55,7 +57,7 @@ Claude:
 
 Five tools, one session. No switching between terminal, notebooks, and browser.
 
-Databricks is powerful. But Databricks inside an AI agent that can parallelize work, compose tools, and cross every boundary? That's something else. [Add Databricks to your agent.](#add-databricks-to-your-agent)
+[Add Databricks to your agent.](#add-databricks-to-your-agent)
 
 ## How It Works
 
