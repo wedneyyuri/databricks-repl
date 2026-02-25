@@ -101,14 +101,6 @@ cp -r /tmp/databricks-repl/skills/databricks-repl .github/skills/
 cp -r /tmp/databricks-repl/skills/databricks-repl-consolidate .github/skills/
 ```
 
-## Start Orchestrating
-
-Databricks is powerful. But Databricks inside an AI agent that can parallelize work, compose tools, and cross every boundary? That's something else.
-
-```
-/plugin marketplace add wedneyyuri/databricks-repl
-```
-
 ## License
 
 [MIT](LICENSE)
