@@ -55,7 +55,7 @@ Claude:
 
 Five tools, one session. No switching between terminal, notebooks, and browser.
 
-[Add Databricks to your agent.](#add-databricks-to-your-agent)
+Databricks is powerful. But Databricks inside an AI agent that can parallelize work, compose tools, and cross every boundary? That's something else. [Add Databricks to your agent.](#add-databricks-to-your-agent)
 
 ## How It Works
 
