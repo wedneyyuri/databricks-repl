@@ -4,13 +4,9 @@ Genie gives you AI inside Databricks. This gives you Databricks inside AI.
 
 Run code on Databricks clusters while your agent orchestrates everything else — other skills, subagents, MCPs, local files, and parallel hypothesis validation. One session, no boundaries.
 
-Works with Claude Code, Cursor, GitHub Copilot, and [35+ other agents](https://agentskills.io).
+Databricks is powerful. But Databricks inside an AI agent that can parallelize work, compose tools, and cross every boundary? That's something else.
 
-## Add Databricks to Your Agent
-
-```bash
-claude plugin add wedneyyuri/databricks-repl
-```
+Works with Claude Code, Cursor, GitHub Copilot, and [40+ other agents](https://skills.sh).
 
 ## Genie vs. Full Orchestration
 
@@ -26,6 +22,23 @@ Genie works inside one notebook, one workspace. When the real work crosses bound
 | Resume after cluster eviction | Start over | Append-only session log with replay |
 
 The difference isn't features. It's architecture. Genie is an assistant scoped to Databricks. This makes Databricks one resource inside an orchestrator that can do **anything** — use [GSD](https://github.com/coreyhaines31/get-shit-done), [superpowers](https://github.com/coreyhaines31/superpowers), compose skills, spawn subagents, interact with MCPs, and parallelize work across tools.
+
+## Add Databricks to Your Agent
+
+### Claude Code
+
+```
+/plugin marketplace add wedneyyuri/databricks-repl
+/plugin install databricks-repl@wedneyyuri-databricks-repl
+```
+
+### Other Agents
+
+```bash
+npx skills add wedneyyuri/databricks-repl
+```
+
+The CLI detects which agents you have and installs to each one automatically.
 
 ## What It Looks Like
 
@@ -43,6 +56,8 @@ Claude:
 ```
 
 Five tools, one session. No switching between terminal, notebooks, and browser.
+
+[Add Databricks to your agent.](#add-databricks-to-your-agent)
 
 ## How It Works
 
@@ -73,31 +88,21 @@ Context stays clean. Sessions stay productive for 50+ interactions.
 - [Databricks SDK for Python](https://docs.databricks.com/dev-tools/sdk-python.html) (`pip install databricks-sdk`)
 - A running classic all-purpose cluster
 
-## Using with Other Agents
+## Manual Installation
 
-These skills follow the [Agent Skills Specification](https://agentskills.io/specification). Copy `skills/` to wherever your agent reads SKILL.md files.
-
-### Cursor
+These skills follow the [Agent Skills Specification](https://agentskills.io/specification). If you prefer not to use the marketplace or `npx skills`, copy the skills manually:
 
 ```bash
-cp -r skills/databricks-repl .cursor/skills/
-cp -r skills/databricks-repl-consolidate .cursor/skills/
-```
+git clone https://github.com/wedneyyuri/databricks-repl.git /tmp/databricks-repl
 
-### GitHub Copilot
+# Cursor
+cp -r /tmp/databricks-repl/skills/databricks-repl .cursor/skills/
+cp -r /tmp/databricks-repl/skills/databricks-repl-consolidate .cursor/skills/
 
-```bash
+# GitHub Copilot
 mkdir -p .github/skills
-cp -r skills/databricks-repl .github/skills/
-cp -r skills/databricks-repl-consolidate .github/skills/
-```
-
-## Start Orchestrating
-
-Databricks is powerful. But Databricks inside an AI agent that can parallelize work, compose tools, and cross every boundary? That's something else.
-
-```bash
-claude plugin add wedneyyuri/databricks-repl
+cp -r /tmp/databricks-repl/skills/databricks-repl .github/skills/
+cp -r /tmp/databricks-repl/skills/databricks-repl-consolidate .github/skills/
 ```
 
 ## License
