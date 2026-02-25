@@ -55,6 +55,8 @@ Claude:
 
 Five tools, one session. No switching between terminal, notebooks, and browser.
 
+[Add Databricks to your agent.](#add-databricks-to-your-agent)
+
 ## How It Works
 
 1. **You describe the task** — your agent decides what to run
@@ -100,12 +102,6 @@ mkdir -p .github/skills
 cp -r /tmp/databricks-repl/skills/databricks-repl .github/skills/
 cp -r /tmp/databricks-repl/skills/databricks-repl-consolidate .github/skills/
 ```
-
-## Start Orchestrating
-
-Databricks is powerful. But Databricks inside an AI agent that can parallelize work, compose tools, and cross every boundary? That's something else.
-
-[Get started above.](#add-databricks-to-your-agent)
 
 ## License
 
