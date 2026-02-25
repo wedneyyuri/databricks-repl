@@ -9,20 +9,21 @@ A skill de copywriting exige que se responda 4 perguntas antes de escrever qualq
 - **Ação primária**: Instalar o plugin (`claude plugin add wedneyyuri/databricks-repl`)
 
 ### 2. Audience
-- **Cliente ideal**: Desenvolvedores e data engineers que usam AI coding agents (Claude Code, Cursor, Copilot) e trabalham com Databricks
-- **Problema que tentam resolver**: Não conseguem usar Databricks de forma fluida dentro do fluxo do AI agent — precisam alternar entre terminal, notebooks Databricks, e IDE
-- **Objeções/hesitações**: "Já tenho o Genie, pra que preciso disso?" / "Isso é só um wrapper de API?" / "Vai poluir meu contexto?"
-- **Linguagem do cliente**: "Análise de dados", "rodar no cluster", "perdi o contexto", "sessão caiu", "pipeline de dados"
+- **Cliente ideal**: Desenvolvedores e data engineers que já usam Databricks e AI coding agents (Claude Code, Cursor, Copilot)
+- **O que já sabem**: Conhecem Genie, usam Databricks diariamente, entendem o ecossistema. Não precisam ser convencidos sobre Databricks — precisam ser convencidos de que existe algo melhor que Genie para o workflow deles com AI agents.
+- **Problema que tentam resolver**: Genie funciona num contexto simples (notebook, workspace). Mas quando o trabalho real exige cruzar fontes de dados, validar hipóteses em paralelo, interagir com APIs externas, ou compor múltiplas ferramentas — Genie não chega lá.
+- **Objeções/hesitações**: "Genie já faz isso" (resposta: não faz — Genie é single-context), "Isso é só um wrapper?" (resposta: não — é uma porta de entrada para o poder de orquestração completo do AI agent)
+- **Linguagem do cliente**: "Rodar no cluster", "pipeline de dados", "validar hipótese", "paralelizar análises", "workflow end-to-end"
 
 ### 3. Product/Offer
-- **O que vende**: Skill que permite AI agents executar Python em clusters Databricks com gerenciamento limpo de contexto
-- **Diferencial vs. alternativas**: Cross-domain orchestration (único que cruza Databricks + local + APIs numa sessão), contexto limpo (metadata-only), session continuity com eviction recovery
-- **Transformação/outcome**: "Seu AI agent vira orquestrador de dados: lê local, executa no cluster, compara resultados, commita — tudo numa sessão"
-- **Proof points**: Exemplos reais (primes, monte-carlo, iris-classification), padrão RLM publicado, compatibilidade com 35+ agents
+- **O que vende**: Databricks como mais uma capacidade dentro do poder de orquestração completo do AI agent
+- **Diferencial vs. Genie**: Genie = assistente single-context dentro do workspace Databricks. databricks-repl = Databricks como um dos muitos recursos que o agente orquestra. O agente pode usar GSD, superpowers, outras skills, criar subagents, explorar código em várias linguagens, interagir com MCPs, validar múltiplas hipóteses em paralelo — e Databricks é só uma das peças.
+- **Transformação/outcome**: "Genie te dá um assistente dentro do Databricks. Isso te dá Databricks dentro de um orquestrador que faz tudo."
+- **Proof points**: Exemplos reais (primes, monte-carlo, iris-classification), composição com skills (GSD, superpowers), padrão RLM, compatibilidade com 35+ agents
 
 ### 4. Context
 - **De onde vem o tráfego**: GitHub search, links em comunidades de AI coding (Twitter/X, Discord, Reddit), referências de outros repos (superpowers, get-shit-done)
-- **O que o visitante já sabe**: Provavelmente já usa Claude Code ou Cursor, pode já conhecer Databricks, mas não necessariamente entende o problema de context management
+- **O que o visitante já sabe**: Já usa Databricks. Já conhece Genie. Provavelmente já usa Claude Code ou Cursor. O README não precisa explicar o que é Databricks ou o que Genie faz — precisa mostrar o que Genie **não** faz e o que se ganha com a abordagem de orquestração.
 
 ---
 
@@ -72,52 +73,49 @@ O README atual viola isso em "Why This Approach?" — essa seção tenta explica
 3. `Never {unpleasant event} again`
 4. `{Question highlighting main pain point}`
 
-**Opções geradas:**
+**Opções geradas (revisadas para público que já conhece Genie):**
 
 | Fórmula | Headline | Rationale |
 |---|---|---|
-| 1 | "Use Databricks from your AI agent — without losing context" | Outcome claro + dor real (perda de contexto) |
-| 1 | "Run Spark jobs from Claude Code — without auth boilerplate or context bloat" | Mais específico, dois pain points |
-| 2 | "The Databricks skill for AI coding agents" | Simples, categoriza imediatamente |
-| 3 | "Never switch between your terminal and Databricks notebooks again" | Emocional, foca na frustração do fluxo quebrado |
-| 4 | "Why can't your AI agent use Databricks and local files in the same session?" | Provoca, destaca a limitação do Genie |
+| 1 | "Databricks inside your AI agent's full orchestration power" | Posiciona Databricks como peça de algo maior. O "algo maior" é o gancho. |
+| 1 | "Genie gives you AI inside Databricks. This gives you Databricks inside AI." | Inversão direta. Memorável. Posiciona sem atacar. |
+| 3 | "Everything Genie does — plus everything outside Databricks" | Reconhece Genie, expande o escopo. |
+| 4 | "What if your AI agent could use Databricks, local files, APIs, and other tools — all at once?" | Pergunta retórica que pinta o cenário completo de orquestração. |
 
-**Recomendação**: Opção 1 como headline, Opção 2 como subheadline.
+**Recomendação**: Opção 2 como headline (inversão direta, posiciona imediatamente), Opção 1 como subheadline (expande sobre o poder de orquestração).
 
 ### Above the Fold — Subheadline
 
 A skill diz: "Expands on headline. Adds specificity. 1-2 sentences max."
 
-**Atual**: "Run Python on Databricks clusters from your AI coding agent. Just describe what you want — the skill handles auth, sessions, output capture, and eviction recovery."
+**Proposta**: "Run code on Databricks clusters while your agent orchestrates everything else — other skills, subagents, MCPs, local files, and parallel hypothesis validation. One session, no boundaries."
 
-**Proposta**: "Describe what you want. The skill creates a session on your cluster, executes the code, and returns clean metadata — no tokens wasted on auth, polling, or raw output."
-
-**Rationale**: Remove "eviction recovery" (jargão sem contexto), mantém a promessa de simplicidade, adiciona especificidade sobre o que é economizado.
+**Rationale**: Para quem já conhece Genie, "handles auth, sessions, output capture" é feature de infraestrutura (boring). O que excita é o que eles **não podem fazer hoje**: orquestração completa com paralelização, subagents, composição de skills.
 
 ### Above the Fold — Primary CTA
 
 A skill diz: Formula = `[Action Verb] + [What They Get] + [Qualifier if needed]`
 
-**Atual**: Nenhum CTA explícito above the fold. A instalação está na seção "Installation" lá embaixo.
-
-**Proposta**: Trazer o CTA para logo após a subheadline:
+**Proposta**: "Add Databricks to your agent" (acima do code block).
 
 ```
 claude plugin add wedneyyuri/databricks-repl
 ```
 
-Com texto: "Install in one command — works with Claude Code, Cursor, Copilot, and [35+ agents](https://agentskills.io)."
+"Works with Claude Code, Cursor, GitHub Copilot, and [35+ other agents](https://agentskills.io)."
 
-### Core Sections — Aplicando a tabela da skill
+**Rationale**: "Add Databricks to your agent" é customer language. Não é "install a plugin" (mecanismo). É o que o dev quer fazer (outcome).
 
-| Seção da Skill | Mapeamento no README | Status Atual | Recomendação |
-|---|---|---|---|
-| **Social Proof** | "Works with 35+ agents" (uma linha) | Fraco — enterrado, sem números de uso | Mover para above the fold, adicionar agent logos se possível |
-| **Problem/Pain** | "Why This Approach?" (técnico demais) | Existe mas fala para engenheiros, não para o público | Reescrever como "The Problem" com linguagem do cliente |
-| **Solution/Benefits** | "What It Feels Like" + "How It Works" | Bom conteúdo, mas mistura features com benefits | Separar: uma seção de benefícios, outra de "how it works" |
-| **How It Works** | "How It Works" (5 steps) | Sólido, claro | Manter, talvez simplificar para 3 steps |
-| **Objection Handling** | "How Is This Different from Databricks Genie?" | Bom conteúdo, mas enterrado no final | **Mover para cima** — é a objeção #1 |
-| **Final CTA** | Não existe | Ausente | Adicionar seção final com CTA + recap de valor |
+### Core Sections — Revisado para Público que Conhece Genie
+
+| Seção da Skill | Recomendação Revisada |
+|---|---|
+| **Problem/Pain** | **"Genie is single-context"** — Genie trabalha num notebook, num workspace. Quando o trabalho real exige cruzar fontes, paralelizar análises, compor ferramentas — ele não chega lá. Essa é a dor. Não precisa ser sutil. |
+| **Solution/Benefits** | **"Full orchestration"** — Paralelizar hipóteses, criar subagents, explorar código em várias linguagens, interagir com MCPs, compor com GSD/superpowers/outras skills. Databricks é uma peça, não o todo. |
+| **How It Works** | Manter simples (3 steps). O público técnico entende rápido. |
+| **Social Proof** | Composição com ecossistema: "Works with GSD, superpowers, and any skill that follows the Agent Skills Spec" |
+| **Objection Handling** | Agora é **a seção principal**, não objeção. A comparação com Genie é o gancho de posicionamento. Deve ser a 2ª ou 3ª seção. |
+| **Final CTA** | "Start orchestrating" — recap do poder de orquestração |
 
 ---
 
@@ -128,66 +126,76 @@ Aplicando todos os princípios, aqui está a estrutura proposta:
 ```markdown
 # databricks-repl
 
-Use Databricks from your AI agent — without losing context.
+Genie gives you AI inside Databricks. This gives you Databricks inside AI.
 
-Describe what you want. The skill creates a session on your cluster,
-executes your code, and returns clean metadata — no tokens wasted
-on auth, polling, or raw output.
+Run code on Databricks clusters while your agent orchestrates
+everything else — other skills, subagents, MCPs, local files, and
+parallel hypothesis validation. One session, no boundaries.
 
 Works with Claude Code, Cursor, GitHub Copilot, and
 [35+ other agents](https://agentskills.io).
 
-## Install
+## Add Databricks to Your Agent
 
 ‎```bash
 claude plugin add wedneyyuri/databricks-repl
 ‎```
 
-## What You Can Do
+## Genie vs. Full Orchestration
+
+Genie works inside one notebook, one workspace. When the real work
+crosses boundaries, it stops. Your AI agent doesn't.
+
+| What you need | Genie | Your agent + this skill |
+|---------------|-------|------------------------|
+| Analyze a repo and cross-reference with Databricks logs | Workspace only | Reads repo + queries cluster in one session |
+| Validate 3 hypotheses in parallel on different datasets | One notebook at a time | Spawns subagents, each running its own cluster query |
+| Train on cluster, compare with local baselines, commit results | Can't access local files or git | Cluster compute + local files + git — same session |
+| Use an MCP to enrich data before running Spark | No MCP support | Calls MCPs, APIs, other skills, then sends to cluster |
+| Explore Python + Scala + SQL across multiple repos | Single-language notebooks | Subagents explore each language, agent synthesizes |
+| Resume after cluster eviction | Start over | Append-only session log with replay |
+
+The difference isn't features. It's architecture. Genie is an
+assistant scoped to Databricks. This makes Databricks one resource
+inside an orchestrator that can do **anything** — use
+[GSD](https://github.com/coreyhaines31/get-shit-done),
+[superpowers](https://github.com/coreyhaines31/superpowers),
+compose skills, spawn subagents, interact with MCPs, and
+parallelize work across tools.
+
+## What It Looks Like
 
 ‎```
-You: "Load the customers table and train a classifier"
+You: "Load the customers table, train a classifier,
+      compare with last quarter's local baseline,
+      and open a PR with the results"
 
 Claude:
-→ creates a REPL session on your cluster
-→ executes the code, returns structured metadata
-→ reads output selectively (only what matters enters context)
-→ iterates until done, then produces a clean .py file
+→ creates a REPL session on your Databricks cluster
+→ runs the training code, captures outputs as files
+→ reads your local baseline for comparison
+→ consolidates everything into a clean .py file
+→ commits and opens the PR
 ‎```
 
-Read a local CSV, run a Spark job on Databricks, compare results
-with a local model, commit the output to git — all in one session.
-
-## Why Not Just Use Genie?
-
-Genie is great inside Databricks notebooks. But it can't cross boundaries.
-
-| Scenario | Genie | This skill |
-|----------|-------|------------|
-| Analyze a repo and cross-reference with Databricks logs | Can't read local repos | One session: reads repo + queries cluster |
-| Train on cluster, compare with local baselines | Workspace only | Local files + cluster compute + local comparison |
-| Build a pipeline and commit the code | No git integration | Executes, validates, consolidates, commits |
-| Resume after connection loss | Start over | Append-only log with replay |
-
-The key: **your AI agent becomes the orchestrator**. Genie is scoped
-to Databricks. This skill lets your agent work across everything.
+Five tools, one session. No switching between terminal,
+notebooks, and browser.
 
 ## How It Works
 
-1. **You describe the task** — your agent decides what code to run
+1. **You describe the task** — your agent decides what to run
 2. **Scripts handle the plumbing** — auth, sessions, polling, output capture
-3. **The agent sees only metadata** — file paths and status, never raw output
+3. **Agent sees only metadata** — file paths and status, never raw output
 
-That's it. Your agent's context stays clean, so sessions stay
-productive for 50+ interactions without compaction.
+Context stays clean. Sessions stay productive for 50+ interactions.
 
 ## Examples
 
 | Example | What It Shows |
 |---------|---------------|
 | [primes](examples/primes/) | Basic Python execution on a Databricks cluster |
-| [monte-carlo-pi](examples/monte-carlo-pi/) | Distributed Spark — estimate π with 100M → 10B samples |
-| [iris-classification](examples/iris-classification/) | Full ML pipeline — load, train, evaluate, persist to Volumes |
+| [monte-carlo-pi](examples/monte-carlo-pi/) | Distributed Spark — estimate π scaling from 100M to 10B samples |
+| [iris-classification](examples/iris-classification/) | Full ML pipeline — load, train, evaluate, persist model to Volumes |
 
 ## Skills
 
@@ -225,6 +233,16 @@ cp -r skills/databricks-repl .github/skills/
 cp -r skills/databricks-repl-consolidate .github/skills/
 ‎```
 
+## Start Orchestrating
+
+Databricks is powerful. But Databricks inside an AI agent that
+can parallelize work, compose tools, and cross every boundary?
+That's something else.
+
+‎```bash
+claude plugin add wedneyyuri/databricks-repl
+‎```
+
 ## License
 
 [MIT](LICENSE)
@@ -234,58 +252,53 @@ cp -r skills/databricks-repl-consolidate .github/skills/
 
 ## Fase 5: Anotações — Por Que Cada Mudança Foi Feita
 
-### Headline
+### Headline: Inversão como posicionamento
 
 **Antes**: "Run Python on Databricks clusters from your AI coding agent"
-**Depois**: "Use Databricks from your AI agent — without losing context"
+**Depois**: "Genie gives you AI inside Databricks. This gives you Databricks inside AI."
 
-**Princípio aplicado**: Fórmula `{Achieve outcome} without {pain point}`. A headline anterior descreve uma feature (rodar Python). A nova descreve um resultado (usar Databricks) e endereça a dor (perder contexto).
+**Princípio aplicado**: Analogia (Best Practices da skill: "Use Analogies When Helpful") + Be Direct. A inversão comunica o posicionamento inteiro em uma frase. Para quem já conhece Genie (o público-alvo), isso clica imediatamente — não precisa de explicação.
 
-### Subheadline
+### Subheadline: Orquestração como promessa
 
 **Antes**: Lista features (auth, sessions, output capture, eviction recovery)
-**Depois**: Descreve o fluxo do ponto de vista do usuário
+**Depois**: "Run code on Databricks clusters while your agent orchestrates everything else — other skills, subagents, MCPs, local files, and parallel hypothesis validation."
 
-**Princípio aplicado**: Benefits > Features. "Eviction recovery" é jargão — "no tokens wasted on auth, polling, or raw output" é o que o dev realmente sente.
+**Princípio aplicado**: Benefits > Features. O público já sabe que precisa de auth e sessions. O que não sabe (e é o gancho) é que o agente pode **orquestrar tudo junto** — skills, subagents, MCPs, paralelização. Isso é o "uau" que faz o cientista de dados ficar doido.
 
-### CTA movido para cima
+### CTA: "Add Databricks to Your Agent"
 
-**Antes**: Instalação enterrada na seção 5
-**Depois**: Segunda seção do README
+**Antes**: "Installation" (seção 5, linguagem de mecanismo)
+**Depois**: "Add Databricks to Your Agent" (seção 2, linguagem de outcome)
 
-**Princípio aplicado**: "Primary CTA" deve estar above the fold. Em GitHub READMEs, "above the fold" = primeiras ~30 linhas visíveis sem scroll.
+**Princípio aplicado**: CTA Formula `[Action Verb] + [What They Get]`. "Add Databricks" é o que o dev quer fazer. "Install a plugin" é como ele faz. A skill diz: foque no que eles ganham.
 
-### "Why Not Just Use Genie?" subiu
+### "Genie vs. Full Orchestration" como seção central
 
-**Antes**: Penúltima seção, tabela técnica de capabilities
-**Depois**: Terceira seção, tabela de cenários reais
+**Antes**: "How Is This Different from Databricks Genie?" — enterrada no final, tabela de capabilities
+**Depois**: "Genie vs. Full Orchestration" — 3ª seção, tabela de cenários reais de orquestração
 
-**Princípio aplicado**: Objection Handling é parte do core da página (tabela da skill). A objeção #1 do público é "já tenho Genie". Respondê-la cedo previne abandono. A tabela mudou de capabilities (features) para scenarios (benefits) — princípio Benefits > Features.
+**Princípio aplicado**: Para público que já conhece Genie, isso não é Objection Handling — é **Problem/Pain** (a seção mais importante do core). A dor é: "Genie não faz X, Y, Z que eu preciso". Os cenários novos mostram paralelização de hipóteses, subagents explorando múltiplas linguagens, composição com MCPs — coisas que Genie não consegue por design. A tabela mudou de capabilities (features) para scenarios que pintam o uso real (benefits).
 
-### "Why This Approach?" removida
+### Parágrafo de orquestração após a tabela
 
-**Antes**: Seção inteira explicando MCP vs SDK vs Skills, padrão RLM, Root LM / Sub-LMs
-**Depois**: Condensada em uma linha: "Your agent's context stays clean, so sessions stay productive for 50+ interactions without compaction."
+**Texto**: "The difference isn't features. It's architecture. Genie is an assistant scoped to Databricks. This makes Databricks one resource inside an orchestrator that can do anything — use GSD, superpowers, compose skills, spawn subagents, interact with MCPs, and parallelize work across tools."
 
-**Princípio aplicado**: One Idea Per Section + Specificity > Vagueness. O visitante quer saber o resultado ("50+ interactions sem degradação"), não a arquitetura (RLM, Root LM, Sub-LMs). A explicação técnica pode ir para uma página de docs separada.
+**Princípio aplicado**: One Idea Per Section — essa seção tem uma ideia: a diferença é arquitetural, não funcional. + Specificity > Vagueness — nomeia as ferramentas concretas (GSD, superpowers, MCPs) em vez de dizer "extensível".
 
-### "How It Works" simplificado
+### "What It Looks Like" em vez de "What It Feels Like"
 
-**Antes**: 5 passos com termos como "JSON metadata", "stateful REPL session", "bootstrap helpers"
-**Depois**: 3 passos em linguagem natural
+**Antes**: Exemplo simples (load customers + train classifier)
+**Depois**: Exemplo cross-domain (train on cluster + compare with local baseline + open PR)
 
-**Princípio aplicado**: Simple > Complex + Customer Language > Company Language. "Scripts handle the plumbing" é o que o dev entende. "dbx_repl.py manages auth, session creation, polling, and output capture" é detalhe de implementação.
+**Princípio aplicado**: Specificity > Vagueness + Show Over Tell. O exemplo anterior poderia ser feito no Genie. O novo mostra algo que **só** a abordagem de orquestração permite: cluster + local + git + PR em uma sessão.
 
-### Seção de Quick Start removida (absorvida pelo CTA)
+### Seção "Start Orchestrating" no final
 
-**Antes**: Seção separada "Quick Start" com exemplo de invocação
-**Depois**: O "What You Can Do" já mostra o fluxo completo
+**Antes**: Não existia CTA final
+**Depois**: Recap de valor + CTA repetido
 
-**Princípio aplicado**: One Idea Per Section. A seção "Quick Start" e "What It Feels Like" eram redundantes — ambas mostravam o fluxo de uso. Consolidei em uma.
-
-### "Final CTA" implícito
-
-A skill recomenda uma seção final com recap de valor e CTA. No README, a seção "Using with Other Agents" funciona como CTA secundário — "já instalou no Claude Code? Agora leve para Cursor e Copilot."
+**Princípio aplicado**: A skill exige Final CTA com "recap value, repeat CTA, risk reversal". O texto "Databricks is powerful. But Databricks inside an AI agent that can parallelize work, compose tools, and cross every boundary? That's something else." recapitula a promessa central e repete o comando de instalação.
 
 ---
 
@@ -297,23 +310,23 @@ A skill pede 2-3 opções com rationale:
 
 | Opção | Copy | Rationale |
 |-------|------|-----------|
-| A | "Use Databricks from your AI agent — without losing context" | Fórmula outcome/pain. Direto, universal. |
-| B | "Your AI agent + Databricks. One session, any data source." | Mais curto, enfatiza cross-domain. Menos claro sobre o "pain". |
-| C | "Never switch between terminal and Databricks notebooks again" | Fórmula "Never X again". Emocional, foca na frustração do workflow quebrado. |
+| A (recomendada) | "Genie gives you AI inside Databricks. This gives you Databricks inside AI." | Inversão direta. Memorável. Posiciona sem atacar. Para público que já conhece Genie, clica imediatamente. |
+| B | "Databricks inside your AI agent's full orchestration power" | Mais descritivo, menos memorável. Bom se "inversão" parecer agressivo. |
+| C | "Everything Genie does — plus everything outside Databricks" | Reconhece Genie, expande escopo. Tom mais conciliador. |
 
-**Recomendação**: A (mais claro, endereça a dor principal)
+**Recomendação**: A — a inversão é a forma mais compacta de comunicar o posicionamento. Se parecer agressivo demais para a relação com Databricks, usar C.
 
 ### CTAs
 
 | Opção | Copy | Rationale |
 |-------|------|-----------|
-| A | "Install in one command" (acima do code block) | Action + qualifier. Simples. |
-| B | "Add Databricks to your agent" (acima do code block) | Foca no outcome, não no mecanismo. |
-| C | "Get started — one command" | Mais direto, mas genérico. |
+| A (recomendada) | "Add Databricks to Your Agent" | Customer language. O outcome que o dev quer. |
+| B | "Start Orchestrating" (CTA final) | Foca no poder de orquestração. Bom como CTA de fechamento. |
+| C | "Install in One Command" | Funcional, remove friction. Bom como texto secundário junto ao code block. |
 
-**Recomendação**: B (customer language — "add Databricks to your agent" é o que o dev quer fazer)
+**Recomendação**: A para CTA principal, B para CTA final (a skill recomenda repetir o CTA no final com variação).
 
 ---
 
 *Análise aplicada usando: [marketingskills/copywriting](https://github.com/coreyhaines31/marketingskills) SKILL.md v1.0.0*
-*Princípios referenciados: Before Writing framework, Clarity > Cleverness, Benefits > Features, Specificity > Vagueness, Customer Language > Company Language, One Idea Per Section, Page Structure Framework (headline formulas, core sections table, CTA formula), Output Format (annotations + alternatives)*
+*Princípios referenciados: Before Writing framework, Clarity > Cleverness, Benefits > Features, Specificity > Vagueness, Customer Language > Company Language, One Idea Per Section, Page Structure Framework (headline formulas, core sections table, CTA formula), Analogies, Be Direct, Rhetorical Questions, Output Format (annotations + alternatives)*
