@@ -6,6 +6,21 @@ Run code on Databricks clusters while your agent orchestrates everything else �
 
 Works with Claude Code, Cursor, GitHub Copilot, and [40+ other agents](https://skills.sh).
 
+## Genie vs. Full Orchestration
+
+Genie works inside one notebook, one workspace. When the real work crosses boundaries, it stops. Your AI agent doesn't.
+
+| What you need | Genie | Your agent + this skill |
+|---------------|-------|------------------------|
+| Analyze a repo and cross-reference with Databricks logs | Workspace only | Reads repo + queries cluster in one session |
+| Validate 3 hypotheses in parallel on different datasets | One notebook at a time | Spawns subagents, each running its own cluster query |
+| Train on cluster, compare with local baselines, commit results | Can't access local files or git | Cluster compute + local files + git — same session |
+| Use an MCP to enrich data before running Spark | No MCP support | Calls MCPs, APIs, other skills, then sends to cluster |
+| Explore Python + Scala + SQL across multiple repos | Single-language notebooks | Subagents explore each language, agent synthesizes |
+| Resume after cluster eviction | Start over | Append-only session log with replay |
+
+The difference isn't features. It's architecture. Genie is an assistant scoped to Databricks. This makes Databricks one resource inside an orchestrator that can do **anything** — use [GSD](https://github.com/coreyhaines31/get-shit-done), [superpowers](https://github.com/coreyhaines31/superpowers), compose skills, spawn subagents, interact with MCPs, and parallelize work across tools.
+
 ## Add Databricks to Your Agent
 
 ### Claude Code
@@ -22,21 +37,6 @@ npx skills add wedneyyuri/databricks-repl
 ```
 
 The CLI detects which agents you have and installs to each one automatically.
-
-## Genie vs. Full Orchestration
-
-Genie works inside one notebook, one workspace. When the real work crosses boundaries, it stops. Your AI agent doesn't.
-
-| What you need | Genie | Your agent + this skill |
-|---------------|-------|------------------------|
-| Analyze a repo and cross-reference with Databricks logs | Workspace only | Reads repo + queries cluster in one session |
-| Validate 3 hypotheses in parallel on different datasets | One notebook at a time | Spawns subagents, each running its own cluster query |
-| Train on cluster, compare with local baselines, commit results | Can't access local files or git | Cluster compute + local files + git — same session |
-| Use an MCP to enrich data before running Spark | No MCP support | Calls MCPs, APIs, other skills, then sends to cluster |
-| Explore Python + Scala + SQL across multiple repos | Single-language notebooks | Subagents explore each language, agent synthesizes |
-| Resume after cluster eviction | Start over | Append-only session log with replay |
-
-The difference isn't features. It's architecture. Genie is an assistant scoped to Databricks. This makes Databricks one resource inside an orchestrator that can do **anything** — use [GSD](https://github.com/coreyhaines31/get-shit-done), [superpowers](https://github.com/coreyhaines31/superpowers), compose skills, spawn subagents, interact with MCPs, and parallelize work across tools.
 
 ## What It Looks Like
 
