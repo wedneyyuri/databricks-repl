@@ -9,8 +9,10 @@ Works with Claude Code, Cursor, GitHub Copilot, and [35+ other agents](https://a
 ## Add Databricks to Your Agent
 
 ```bash
-claude plugin add wedneyyuri/databricks-repl
+npx skills add wedneyyuri/databricks-repl
 ```
+
+Works with Claude Code, Cursor, Copilot, and [40+ other agents](https://skills.sh). The CLI detects your agents and installs to the right location.
 
 ## Genie vs. Full Orchestration
 
@@ -73,23 +75,25 @@ Context stays clean. Sessions stay productive for 50+ interactions.
 - [Databricks SDK for Python](https://docs.databricks.com/dev-tools/sdk-python.html) (`pip install databricks-sdk`)
 - A running classic all-purpose cluster
 
-## Using with Other Agents
+## Manual Installation
 
-These skills follow the [Agent Skills Specification](https://agentskills.io/specification). Copy `skills/` to wherever your agent reads SKILL.md files.
-
-### Cursor
+These skills follow the [Agent Skills Specification](https://agentskills.io/specification). If you prefer not to use `npx skills`, copy the skills manually:
 
 ```bash
-cp -r skills/databricks-repl .cursor/skills/
-cp -r skills/databricks-repl-consolidate .cursor/skills/
-```
+git clone https://github.com/wedneyyuri/databricks-repl.git /tmp/databricks-repl
 
-### GitHub Copilot
+# Claude Code
+cp -r /tmp/databricks-repl/skills/databricks-repl .claude/skills/
+cp -r /tmp/databricks-repl/skills/databricks-repl-consolidate .claude/skills/
 
-```bash
+# Cursor
+cp -r /tmp/databricks-repl/skills/databricks-repl .cursor/skills/
+cp -r /tmp/databricks-repl/skills/databricks-repl-consolidate .cursor/skills/
+
+# GitHub Copilot
 mkdir -p .github/skills
-cp -r skills/databricks-repl .github/skills/
-cp -r skills/databricks-repl-consolidate .github/skills/
+cp -r /tmp/databricks-repl/skills/databricks-repl .github/skills/
+cp -r /tmp/databricks-repl/skills/databricks-repl-consolidate .github/skills/
 ```
 
 ## Start Orchestrating
@@ -97,7 +101,7 @@ cp -r skills/databricks-repl-consolidate .github/skills/
 Databricks is powerful. But Databricks inside an AI agent that can parallelize work, compose tools, and cross every boundary? That's something else.
 
 ```bash
-claude plugin add wedneyyuri/databricks-repl
+npx skills add wedneyyuri/databricks-repl
 ```
 
 ## License
