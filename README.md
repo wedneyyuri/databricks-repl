@@ -8,6 +8,15 @@ Works with Claude Code, Cursor, GitHub Copilot, and [40+ other agents](https://s
 
 ## Add Databricks to Your Agent
 
+### Claude Code
+
+```
+/plugin marketplace add wedneyyuri/databricks-repl
+/plugin install databricks-repl@wedneyyuri-databricks-repl
+```
+
+### Other Agents
+
 ```bash
 npx skills add wedneyyuri/databricks-repl
 ```
@@ -77,14 +86,10 @@ Context stays clean. Sessions stay productive for 50+ interactions.
 
 ## Manual Installation
 
-These skills follow the [Agent Skills Specification](https://agentskills.io/specification). If you prefer not to use `npx skills`, copy the skills manually:
+These skills follow the [Agent Skills Specification](https://agentskills.io/specification). If you prefer not to use the marketplace or `npx skills`, copy the skills manually:
 
 ```bash
 git clone https://github.com/wedneyyuri/databricks-repl.git /tmp/databricks-repl
-
-# Claude Code
-cp -r /tmp/databricks-repl/skills/databricks-repl .claude/skills/
-cp -r /tmp/databricks-repl/skills/databricks-repl-consolidate .claude/skills/
 
 # Cursor
 cp -r /tmp/databricks-repl/skills/databricks-repl .cursor/skills/
@@ -100,8 +105,8 @@ cp -r /tmp/databricks-repl/skills/databricks-repl-consolidate .github/skills/
 
 Databricks is powerful. But Databricks inside an AI agent that can parallelize work, compose tools, and cross every boundary? That's something else.
 
-```bash
-npx skills add wedneyyuri/databricks-repl
+```
+/plugin marketplace add wedneyyuri/databricks-repl
 ```
 
 ## License
